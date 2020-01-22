@@ -1,0 +1,16 @@
+## OS related
+*.DS_Store
+
+## IDE
+.settings
+.project
+.buildpath
+*.sublime-project
+*.sublime-workspace
+*.iml
+.idea
+
+# Vim
+.*.swp
+.*.swo
+
