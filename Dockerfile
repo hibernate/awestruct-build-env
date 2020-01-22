@@ -16,8 +16,6 @@ ENV        HOME /home/dev
 ENV        GEM_HOME $HOME/.gem/ruby
 ENV        GEM_PATH $GEM_HOME
 ENV        PATH $HOME/bin:$GEM_HOME/bin:$PATH
-ENV        LANG en_US.UTF-8
-ENV        LC_ALL en_US.UTF-8
 
 RUN        mkdir $HOME/.gems
 
