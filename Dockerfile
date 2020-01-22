@@ -28,6 +28,9 @@ WORKDIR    $HOME/website
 # Without this, we would get an error about rake being an unknown command.
 RUN        gem install -N rake bundler
 
+# Set umask to 000 next time bash is started
+COPY       profile .profile
+
 # Make sure to install all the necessary gems when starting the container
 ENTRYPOINT ["/bin/sh", "-c", "eval ${@}", "gem install -N rake bundler &&", "rake setup &&"]
 # When gems are installed, by default, run bash
