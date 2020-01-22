@@ -19,7 +19,7 @@ cd <your locally cloned website>
 Then run the container:
 
 ```
-docker run -t -i -p 4242:4242 --security-opt label:disable -v website-gems:/home/dev/.gem -v $(pwd):/home/dev/website quay.io/hibernate/awestruct-build-env:latest
+docker run --rm=true -t -i -p 4242:4242 --security-opt label:disable -v website-gems:/home/dev/.gem -v $(pwd):/home/dev/website quay.io/hibernate/awestruct-build-env:latest
 ```
 
 Note that, on Linux, you might need to use _sudo_ to execute docker commands.
@@ -39,5 +39,5 @@ The website should be accessible at <http://localhost:4242>.
 You can also use this one-liner to run arbitrary commands after gems are installed:
 
 ```
-docker run -t -i -p 4242:4242 --security-opt label:disable -v website-gems:/home/dev/.gem -v $(pwd):/home/dev/website quay.io/hibernate/awestruct-build-env:latest rake clean preview
+docker run --rm=true -t -i -p 4242:4242 --security-opt label:disable -v website-gems:/home/dev/.gem -v $(pwd):/home/dev/website quay.io/hibernate/awestruct-build-env:latest rake clean preview
 ```
