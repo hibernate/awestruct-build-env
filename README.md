@@ -39,5 +39,5 @@ The website should be accessible at <http://localhost:4242>.
 You can also use this one-liner to run arbitrary commands non-interactively:
 
 ```
-docker run --rm=true -t -i -p 4242:4242 --security-opt label:disable -v $(pwd):/home/dev/website quay.io/hibernate/awestruct-build-env:latest rake setup clean gen[staging]
+docker run --rm=true -t -i -p 4242:4242 --security-opt label:disable -v $(pwd):/home/dev/website quay.io/hibernate/awestruct-build-env:latest "rake setup && rake clean gen[staging]"
 ```
