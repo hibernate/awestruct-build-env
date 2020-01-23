@@ -31,8 +31,10 @@ EXPOSE     4242
 VOLUME     $HOME/website
 WORKDIR    $HOME/website
 
-# Make sure to install all the necessary gems when starting the container
-ENTRYPOINT ["/bin/sh", "-c", "eval ${@}", "gem install -N rake bundler &&", "rake setup &&"]
+# Use bash --login so that the locale defaults to C.UTF-8, not POSIX (= ASCII).
+# This is important for the templating engine, tilt, in particular.
+# Make sure to install all the necessary gems when starting the container.
+ENTRYPOINT ["/bin/bash", "--login", "-c", "eval ${@}", "gem install -N rake bundler &&", "rake setup &&"]
 # When gems are installed, by default, run bash
 # This can be overridden in the "docker run" command to run rake directly
 CMD ["bash"]
