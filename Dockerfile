@@ -19,10 +19,6 @@ ENV        PATH $HOME/bin:$GEM_HOME/bin:$PATH
 
 RUN        mkdir $HOME/.gems
 
-EXPOSE     4242
-VOLUME     $HOME/website
-WORKDIR    $HOME/website
-
 # Pre-install rake so that the command is already available when
 # "eval" intrprets the entrypoint command below.
 # Without this, we would get an error about rake being an unknown command.
@@ -30,6 +26,10 @@ RUN        gem install -N rake bundler
 
 # Set umask to 000 next time bash is started
 COPY       profile .profile
+
+EXPOSE     4242
+VOLUME     $HOME/website
+WORKDIR    $HOME/website
 
 # Make sure to install all the necessary gems when starting the container
 ENTRYPOINT ["/bin/sh", "-c", "eval ${@}", "gem install -N rake bundler &&", "rake setup &&"]
