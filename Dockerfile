@@ -29,7 +29,7 @@ WORKDIR    $HOME/website
 # Use bash --login so that the locale defaults to C.UTF-8, not POSIX (= ASCII).
 # This is important for the templating engine, tilt, in particular.
 # Make sure to install rake and bundler when starting the container.
-ENTRYPOINT ["/bin/bash", "--login", "-c", "eval ${@}", "awestruct-build-env", "gem install rake bundler &&"]
+ENTRYPOINT ["/bin/bash", "--login", "-c", "eval ${@}", "awestruct-build-env", "gem install -N rake bundler &&"]
 # When rake and bundler, by default, run bash
 # This can be overridden in the "docker run" command to run rake directly
 CMD ["bash"]
