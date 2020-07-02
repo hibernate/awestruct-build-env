@@ -25,6 +25,13 @@ docker run --rm=true -t -i -p 4242:4242 --security-opt label:disable -v $(pwd):/
 Note that, on Linux, you might need to use _sudo_ to execute docker commands.
 If you want to avoid that have a look [here](https://docs.docker.com/install/linux/linux-postinstall/#manage-docker-as-a-non-root-user).
 
+Alternatively, with [Podman](https://podman.io/):
+
+```
+# The :Z suffix in the volume definition is necessary to make files accessible to the container, despite SELinux labels
+podman run --rm=true -t -i -p 4242:4242 -v $(pwd):/home/dev/website:Z quay.io/hibernate/awestruct-build-env:latest
+```
+
 This will launch a shell from which you can build/run the website.
 
 For example, to serve the website locally:
