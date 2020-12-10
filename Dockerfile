@@ -26,9 +26,14 @@ EXPOSE     4242
 VOLUME     $HOME/website
 WORKDIR    $HOME/website
 
+# Pre-install rake, bundler, awestruct
+ARG        awestruct_version
+RUN        gem install -N awestruct -v ${awestruct_version}
+RUN        gem install -N rake bundler
+
 # Use bash --login so that the locale defaults to C.UTF-8, not POSIX (= ASCII).
 # This is important for the templating engine, tilt, in particular.
-# Make sure to install rake and bundler when starting the container.
+# Make sure to install (update) rake and bundler when starting the container.
 ENTRYPOINT ["/bin/bash", "--login", "-c", "eval ${@}", "awestruct-build-env", "gem install -N rake bundler &&"]
 # When rake and bundler, by default, run bash
 # This can be overridden in the "docker run" command to run rake directly
