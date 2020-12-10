@@ -1,4 +1,4 @@
-FROM       fedora:31
+FROM       fedora:33
 
 # Install the required dependencies to complile native extensions
 RUN        dnf makecache
