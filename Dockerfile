@@ -2,10 +2,10 @@ FROM       fedora:33
 
 # Install the required dependencies to complile native extensions
 RUN        dnf makecache
-RUN        dnf -y install gcc-c++ make ruby-devel libxml2-devel libxslt-devel findutils git ruby tar redhat-rpm-config
+RUN        dnf -y install gcc-c++ make ruby-devel libxml2-devel libxslt-devel findutils git ruby tar redhat-rpm-config which python2 patchutils
 
 RUN        groupadd -r dev && useradd  -g dev -u 1000 dev
-RUN        mkdir -p /home/dev
+RUN        mkdir -p /home/dev/
 RUN        chown dev:dev /home/dev
 
 # From here we run everything as dev user
@@ -22,14 +22,19 @@ RUN        mkdir $HOME/.gems
 # Set umask to 000 next time bash is started
 COPY       profile .profile
 
+# Pre-install a few gems
+# Applications may end up using different versions,
+# but hopefully at least *some* of the pre-installed gems will be useful
+RUN        mkdir -p /home/dev/template
+WORKDIR    /home/dev/template
+COPY       Gemfile Gemfile
+RUN        gem install -N rake
+RUN        gem install -N bundler -v '2.1.4'
+RUN        bundle install
+
 EXPOSE     4242
 VOLUME     $HOME/website
 WORKDIR    $HOME/website
-
-# Pre-install rake, bundler, awestruct
-ARG        awestruct_version
-RUN        gem install -N awestruct -v ${awestruct_version}
-RUN        gem install -N rake bundler
 
 # Use bash --login so that the locale defaults to C.UTF-8, not POSIX (= ASCII).
 # This is important for the templating engine, tilt, in particular.
