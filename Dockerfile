@@ -1,8 +1,7 @@
 FROM       fedora:33
 
-# Install the required dependencies to complile native extensions
-RUN        dnf makecache
-RUN        dnf -y install gcc-c++ make ruby-devel libxml2-devel libxslt-devel findutils git ruby tar redhat-rpm-config which python2 patchutils
+# Install the required dependencies to compile native extensions
+RUN        dnf -y update && dnf -y install gcc-c++ make ruby-devel libxml2-devel libxslt-devel findutils git ruby tar redhat-rpm-config which python2 patchutils && dnf clean all
 
 RUN        groupadd -r dev && useradd  -g dev -u 1000 dev
 RUN        mkdir -p /home/dev/
