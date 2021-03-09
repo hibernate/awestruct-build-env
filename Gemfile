@@ -5,6 +5,7 @@ gem 'bundler', '2.1.4'
 # Main site dependencies
 gem 'awestruct', '0.6.1'
 gem 'sass'
+gem 'sassc'
 gem 'json'
 gem 'uglifier'         # Ruby wrapper for UglifyJS JavaScript compressor
 gem 'cssminify'        # CSS compression using YUI compressor
@@ -15,6 +16,8 @@ gem 'i18n'             # Deal with non Ascii names
 gem 'htmlentities'     # Escape/unescape HTML entities
 gem 'nokogiri'         # HTML parser
 gem 'logging'
+
+gem 'rdiscount', '~> 2.0.7', :platforms => [:ruby]
 
 ## Non Windows
 gem 'therubyracer', :platforms => :ruby

@@ -100,6 +100,7 @@ GEM
     rb-inotify (0.10.1)
       ffi (~> 1.0)
     rchardet (1.8.0)
+    rdiscount (2.0.7.3)
     redcarpet (3.5.1)
     ref (2.0.0)
     rest-client (2.1.0)
@@ -128,6 +129,8 @@ GEM
     sass-listen (4.0.0)
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
+    sassc (2.4.0)
+      ffi (~> 1.9)
     shellany (0.0.1)
     temple (0.8.2)
     therubyracer (0.12.3)
@@ -159,9 +162,11 @@ DEPENDENCIES
   logging
   nokogiri
   pry-byebug
+  rdiscount (~> 2.0.7)
   redcarpet
   rspec
   sass
+  sassc
   therubyracer
   uglifier
   win32-open3-19
