@@ -27,6 +27,7 @@ COPY       profile .profile
 RUN        mkdir -p /home/dev/template
 WORKDIR    /home/dev/template
 COPY       Gemfile Gemfile
+COPY       Gemfile.lock Gemfile.lock
 RUN        gem install -N rake
 RUN        gem install -N bundler -v '2.1.4'
 RUN        bundle install
