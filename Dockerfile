@@ -26,10 +26,10 @@ COPY       profile .profile
 # but hopefully at least *some* of the pre-installed gems will be useful
 RUN        mkdir -p /home/dev/template
 WORKDIR    /home/dev/template
-COPY       Gemfile Gemfile
-COPY       Gemfile.lock Gemfile.lock
+COPY       --chown=dev:dev Gemfile Gemfile
+COPY       --chown=dev:dev Gemfile.lock Gemfile.lock
 RUN        gem install -N rake
-RUN        gem install -N bundler -v '2.1.4'
+RUN        gem install -N bundler -v '2.2.17'
 RUN        bundle install
 
 EXPOSE     4242
