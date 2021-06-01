@@ -29,7 +29,7 @@ WORKDIR    /home/dev/template
 COPY       --chown=dev:dev Gemfile Gemfile
 COPY       --chown=dev:dev Gemfile.lock Gemfile.lock
 RUN        gem install -N rake
-RUN        gem install -N bundler -v '2.2.17'
+RUN        gem install -N bundler -v '2.2.18'
 RUN        bundle install
 
 EXPOSE     4242

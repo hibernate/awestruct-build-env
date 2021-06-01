@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'bundler', '2.2.17'
+gem 'bundler', '2.2.18'
 
 # Main site dependencies
 gem 'awestruct', '0.6.1'
