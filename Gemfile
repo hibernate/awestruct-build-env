@@ -28,6 +28,9 @@ gem 'win32-open3-19', :platforms => [:mswin, :mingw]
 # Test dependencies
 gem 'rspec'
 
+# For previews
+gem 'webrick'
+
 # To enable guard and livereload
 gem 'guard'
 gem 'guard-livereload'
@@ -35,3 +38,4 @@ gem 'yajl-ruby'
 
 # Debugger
 gem 'pry-byebug'
+

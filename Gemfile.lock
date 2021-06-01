@@ -141,6 +141,7 @@ GEM
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.7.7)
+    webrick (1.7.0)
     yajl-ruby (1.4.1)
 
 PLATFORMS
@@ -167,6 +168,7 @@ DEPENDENCIES
   sass
   sassc
   uglifier
+  webrick
   win32-open3-19
   yajl-ruby
 

@@ -1,7 +1,7 @@
-FROM       quay.io/fedora/fedora:33-x86_64
+FROM       quay.io/fedora/fedora:34-x86_64
 
 # Install the required dependencies to compile native extensions
-RUN        dnf -y update && dnf -y install gcc-c++ make ruby-devel libxml2-devel libxslt-devel findutils git ruby tar redhat-rpm-config which python2 patchutils && dnf clean all
+RUN        dnf -y update && dnf -y install gcc-c++ make ruby-devel libxml2-devel libxslt-devel libffi-devel findutils git ruby tar redhat-rpm-config which python2 patchutils && dnf clean all
 
 RUN        groupadd -r dev && useradd  -g dev -u 1000 dev
 RUN        mkdir -p /home/dev/
@@ -9,6 +9,9 @@ RUN        chown dev:dev /home/dev
 
 # From here we run everything as dev user
 USER       dev
+
+# Setup the locale
+ENV LANG=C.UTF-8
 
 # Setup all the env variables needed for ruby
 ENV        HOME /home/dev
@@ -36,11 +39,9 @@ EXPOSE     4242
 VOLUME     $HOME/website
 WORKDIR    $HOME/website
 
-# Use bash --login so that the locale defaults to C.UTF-8, not POSIX (= ASCII).
-# This is important for the templating engine, tilt, in particular.
-# Make sure to install (update) rake and bundler when starting the container.
-ENTRYPOINT ["/bin/bash", "--login", "-c", "eval ${@}", "awestruct-build-env"]
-# When rake and bundler, by default, run bash
+# Allow running complicated commands when starting the container (with &&, etc.)
+ENTRYPOINT ["/bin/bash", "-c", "eval ${@}", "awestruct-build-env"]
+# By default, just run bash
 # This can be overridden in the "docker run" command to run rake directly
 CMD ["bash"]
 
