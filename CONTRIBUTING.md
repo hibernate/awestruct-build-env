@@ -12,6 +12,6 @@ If you need to update dependencies:
 * update the `Gemfile`
 * run `./update-gemfile.sh` (this will update `Gemfile.lock` in particular)
 * optionally:
-** build the image with the Gemfiles updated using `docker build .`
+  * build the image with the Gemfiles updated using `docker build .`
   * test the image
 * commit the changes and tag them as necessary
