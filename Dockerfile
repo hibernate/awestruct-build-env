@@ -21,9 +21,6 @@ ENV        PATH $HOME/bin:$GEM_HOME/bin:$PATH
 
 RUN        mkdir $HOME/.gems
 
-# Set umask to 000 next time bash is started
-COPY       profile .profile
-
 # Pre-install a few gems
 # Applications may end up using different versions,
 # but hopefully at least *some* of the pre-installed gems will be useful
@@ -34,6 +31,12 @@ COPY       --chown=dev:dev Gemfile.lock Gemfile.lock
 RUN        gem install -N rake
 RUN        gem install -N bundler -v '2.2.18'
 RUN        bundle install
+
+# Avoid permission problems in the container when UID/GID are forced with '-u <UID>:<GID>'
+RUN        chmod -R a+rwx /home/dev
+
+# Avoid permission problems on the host when accessing files created by the container
+COPY       umask.sh /etc/profile.d/umask.sh
 
 EXPOSE     4242
 VOLUME     $HOME/website

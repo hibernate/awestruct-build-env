@@ -19,7 +19,7 @@ cd <your locally cloned website>
 Then run the container:
 
 ```
-docker run --rm=true -t -i -p 4242:4242 --security-opt label:disable -v $(pwd):/home/dev/website quay.io/hibernate/awestruct-build-env:latest
+docker run --pull always --rm -t -i -u $UID:$GID -p 4242:4242 -v $(pwd):/home/dev/website:rw,Z quay.io/hibernate/awestruct-build-env:latest
 ```
 
 Note that, on Linux, you might need to use _sudo_ to execute docker commands.
@@ -28,7 +28,7 @@ If you want to avoid that have a look [here](https://docs.docker.com/install/lin
 Alternatively, with [Podman](https://podman.io/):
 
 ```
-podman run --rm=true -t -i -p 4242:4242 --uidmap=0:1:1000 --uidmap=1000:0:1 -v $(pwd):/home/dev/website:Z quay.io/hibernate/awestruct-build-env:latest
+podman run --pull always --rm -t -i -u $UID:$GID -p 4242:4242 -v $(pwd):/home/dev/website:rw,Z quay.io/hibernate/awestruct-build-env:latest
 ```
 
 This will launch a shell from which you can build/run the website.
