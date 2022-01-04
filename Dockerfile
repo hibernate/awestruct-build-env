@@ -29,7 +29,7 @@ WORKDIR    /home/dev/template
 COPY       --chown=dev:dev Gemfile Gemfile
 COPY       --chown=dev:dev Gemfile.lock Gemfile.lock
 RUN        gem install -N rake
-RUN        gem install -N bundler -v '2.2.18'
+RUN        gem install -N bundler -v '2.3.4'
 RUN        bundle install
 
 # Avoid permission problems in the container when UID/GID are forced with '-u <UID>:<GID>'
