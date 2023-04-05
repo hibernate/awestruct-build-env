@@ -6,12 +6,12 @@ GEM
     ansi (1.5.0)
     asciidoctor (2.0.18)
     ast (2.4.2)
-    awestruct (0.6.1)
-      asciidoctor (>= 1.5.2, < 3.0)
+    awestruct (0.6.5)
+      asciidoctor (>= 1.5.2)
       git (~> 1.2, >= 1.2.6)
       guard (~> 2.0, >= 2.13.0)
       guard-livereload (~> 2.0, >= 2.1.2)
-      haml (>= 4.0.5, < 6.0)
+      haml (>= 4.0.5)
       listen (~> 3.1)
       logging (~> 2.2)
       mime-types (~> 3.0)
@@ -138,6 +138,7 @@ GEM
     temple (0.10.0)
     thor (1.2.1)
     tilt (2.1.0)
+    tracer (0.1.1)
     uglifier (4.2.0)
       execjs (>= 0.3.0, < 3)
     unf (0.1.4)
@@ -151,11 +152,12 @@ PLATFORMS
 
 DEPENDENCIES
   asciidoctor
-  awestruct (= 0.6.1)
-  bundler (= 2.3.4)
+  awestruct (= 0.6.5)
+  bundler (= 2.4.10)
   cssminify
   guard
   guard-livereload
+  haml (< 6.0)
   htmlcompressor
   htmlentities
   i18n
@@ -169,10 +171,11 @@ DEPENDENCIES
   rspec
   sass
   sassc
+  tracer
   uglifier
   webrick
   win32-open3-19
   yajl-ruby
 
 BUNDLED WITH
-   2.3.4
+   2.4.10

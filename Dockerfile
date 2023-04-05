@@ -1,4 +1,4 @@
-FROM       quay.io/fedora/fedora:35-x86_64
+FROM       quay.io/fedora/fedora:37
 
 # Install the required dependencies to compile native extensions
 RUN        dnf -y update && dnf -y install gcc-c++ make ruby-devel libxml2-devel libxslt-devel libffi-devel findutils git ruby tar redhat-rpm-config which python2 patchutils && dnf clean all
@@ -26,10 +26,10 @@ RUN        mkdir $HOME/.gems
 # but hopefully at least *some* of the pre-installed gems will be useful
 RUN        mkdir -p /home/dev/template
 WORKDIR    /home/dev/template
+RUN        gem install -N rake
+RUN        gem install -N bundler -v '2.4.10'
 COPY       --chown=dev:dev Gemfile Gemfile
 COPY       --chown=dev:dev Gemfile.lock Gemfile.lock
-RUN        gem install -N rake
-RUN        gem install -N bundler -v '2.3.4'
 RUN        bundle install
 
 # Avoid permission problems in the container when UID/GID are forced with '-u <UID>:<GID>'
