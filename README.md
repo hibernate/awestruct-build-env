@@ -1,5 +1,7 @@
 # Awestruct build environment for Hibernate websites
 
+[![Docker Repository on Quay](https://quay.io/repository/hibernate/awestruct-build-env/status "Docker Repository on Quay")](https://quay.io/repository/hibernate/awestruct-build-env)
+
 ## Building and running Awestruct-based websites in Docker
 
 The following instructions allow you to build/run Awestruct-based websites
@@ -47,3 +49,7 @@ You can also use this one-liner to run arbitrary commands non-interactively:
 ```
 docker run --rm=true -t -i -p 4242:4242 --security-opt label:disable -v $(pwd):/home/dev/website quay.io/hibernate/awestruct-build-env:latest "rake setup && rake clean gen[staging]"
 ```
+
+## Contributing
+
+See CONTRIBUTING.md
