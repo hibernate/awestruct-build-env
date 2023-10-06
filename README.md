@@ -30,7 +30,7 @@ If you want to avoid that have a look [here](https://docs.docker.com/install/lin
 Alternatively, with [Podman](https://podman.io/):
 
 ```
-podman run --pull always --rm -t -i -u $UID:$GID -p 4242:4242 -v $(pwd):/home/dev/website:rw,Z quay.io/hibernate/awestruct-build-env:latest
+podman run --pull always --rm -t -i --userns=keep-id -u $UID:$GID -p 4242:4242 -v $(pwd):/home/dev/website:rw,Z quay.io/hibernate/awestruct-build-env:latest
 ```
 
 This will launch a shell from which you can build/run the website.
