@@ -16,6 +16,7 @@ gem 'redcarpet'        # Markdown processing
 gem 'asciidoctor'      # Asciidoc renderer
 gem 'i18n'             # Deal with non Ascii names
 gem 'htmlentities'     # Escape/unescape HTML entities
+gem 'nokogiri'         # HTML parser
 gem 'logging'
 
 gem 'rdiscount', '~> 2.0.7', :platforms => [:ruby]
