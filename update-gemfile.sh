@@ -3,7 +3,7 @@
 COMPOSE=podman-compose
 if ! which "$COMPOSE" 2>&1 1>/dev/null
 then
-	COMPOSE=docker-compose
+	COMPOSE="docker compose"
 fi
 
 $COMPOSE build
