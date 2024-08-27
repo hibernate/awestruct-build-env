@@ -6,7 +6,6 @@ gem 'bundler', '2.4.10'
 # Main site dependencies
 gem 'awestruct', '0.6.7'
 gem 'sass'
-gem 'sassc'
 gem 'json'
 gem 'haml', '< 6.0'    # Haml 6 would require udpating our filter registration code
 gem 'uglifier'         # Ruby wrapper for UglifyJS JavaScript compressor
