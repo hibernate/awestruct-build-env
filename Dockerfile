@@ -1,4 +1,4 @@
-FROM       quay.io/fedora/fedora:37
+FROM       quay.io/fedora/fedora:40
 
 # Install the required dependencies to compile native extensions
 RUN        dnf -y update && dnf -y install gcc-c++ make ruby-devel libxml2-devel libxslt-devel libffi-devel findutils git ruby tar redhat-rpm-config which python2 patchutils && dnf clean all

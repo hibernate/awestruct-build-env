@@ -18,8 +18,6 @@ gem 'htmlentities'     # Escape/unescape HTML entities
 gem 'nokogiri'         # HTML parser
 gem 'logging'
 
-gem 'rdiscount', '~> 2.0.7', :platforms => [:ruby]
-
 ## Non Windows
 gem 'mini_racer', :platforms => :ruby
 
