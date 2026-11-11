@@ -9,4 +9,8 @@ else
 fi
 
 $COMPOSE build
-$COMPOSE $COMPOSE_ARGS_FOR_RUN run -u "$UID:$GID" awestruct-build-env bundle update "${@}"
+if [ "$#" -eq 0 ]; then
+	$COMPOSE $COMPOSE_ARGS_FOR_RUN run --rm -u "$UID:$GID" awestruct-build-env bundle update --all
+else
+	$COMPOSE $COMPOSE_ARGS_FOR_RUN run --rm -u "$UID:$GID" awestruct-build-env bundle update "${@}"
+fi
