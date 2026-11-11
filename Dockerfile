@@ -1,7 +1,7 @@
-FROM       quay.io/fedora/fedora:40
+FROM       quay.io/fedora/fedora:45
 
 # Install the required dependencies to compile native extensions
-RUN        dnf -y update && dnf -y install gcc-c++ make ruby-devel libxml2-devel libxslt-devel libffi-devel findutils git ruby tar redhat-rpm-config which python2 patchutils && dnf clean all
+RUN        dnf -y update && dnf -y install gcc-c++ make ruby-devel libxml2-devel libxslt-devel libffi-devel findutils git ruby tar redhat-rpm-config which python3 patchutils && dnf clean all
 
 RUN        groupadd -r dev && useradd  -g dev -u 1000 dev
 RUN        mkdir -p /home/dev/
@@ -14,10 +14,10 @@ USER       dev
 ENV LANG=C.UTF-8
 
 # Setup all the env variables needed for ruby
-ENV        HOME /home/dev
-ENV        GEM_HOME $HOME/.gem/ruby
-ENV        GEM_PATH $GEM_HOME
-ENV        PATH $HOME/bin:$GEM_HOME/bin:$PATH
+ENV        HOME=/home/dev
+ENV        GEM_HOME=$HOME/.gem/ruby
+ENV        GEM_PATH=$GEM_HOME
+ENV        PATH=$HOME/bin:$GEM_HOME/bin:$PATH
 
 RUN        mkdir $HOME/.gems
 
@@ -27,7 +27,7 @@ RUN        mkdir $HOME/.gems
 RUN        mkdir -p /home/dev/template
 WORKDIR    /home/dev/template
 RUN        gem install -N rake
-RUN        gem install -N bundler -v '2.4.10'
+RUN        gem install -N bundler -v '4.0.24'
 COPY       --chown=dev:dev Gemfile Gemfile
 COPY       --chown=dev:dev Gemfile.lock Gemfile.lock
 RUN        bundle install

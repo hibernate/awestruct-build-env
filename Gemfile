@@ -1,10 +1,13 @@
 source 'https://rubygems.org'
 
 # Don't forget to update the version in the dockerfile when updating this
-gem 'bundler', '2.4.10'
+gem 'bundler', '4.0.24'
 
 # Main site dependencies
 gem 'awestruct', '0.6.7'
+gem 'base64'          # em-websocket requires this, but Ruby 4 no longer provides it by default
+gem 'ostruct'         # Awestruct requires this, but Ruby 4 no longer provides it by default
+gem 'syslog'          # logging loads this, but Ruby 4 no longer provides it by default
 gem 'sass'
 gem 'json'
 gem 'haml', '< 6.0'    # Haml 6 would require udpating our filter registration code
@@ -22,7 +25,7 @@ gem 'logging'
 gem 'mini_racer', :platforms => :ruby
 
 ## Windows
-gem 'win32-open3-19', :platforms => [:mswin, :mingw]
+gem 'win32-open3-19', :platforms => :windows
 
 # Test dependencies
 gem 'rspec'
